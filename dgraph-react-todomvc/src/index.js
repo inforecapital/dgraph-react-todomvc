@@ -1,15 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import TodoApp from './TodoApp';
+import TodoModel from './TodoModel';
+import 'todomvc-app-css/index.css';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const model = new TodoModel()
+
+function render() {
+  ReactDOM.render(
+    <TodoApp model={model}/>,
+    document.getElementById('root'),
+  )
+}
+
+model.subscribe(render)
+render()
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
